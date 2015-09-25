@@ -45,6 +45,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let messageCell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! MessageCell
         if self.messages != nil{
             messageCell.messageLabel.text = messages![indexPath.row]["text"] as! String
+            if messages![indexPath.row]["user"] != nil{
+                messageCell.userLabel.text = messages![indexPath.row]["user"].username
+            }
+            
         }
         
         return messageCell
@@ -53,13 +57,14 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchMessages()
         NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "fetchMessages", userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
     }
     
     func fetchMessages(){
         print("Refresh called.")
-        let query = PFQuery(className:"Message")
+        let query = PFQuery(className:"Message").includeKey("user").orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock { (messages:[PFObject]?, error:NSError?) -> Void in
             self.messages = messages
             self.tableView.reloadData()
