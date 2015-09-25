@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  SignUpViewController.swift
 //  ChatClient
 //
 //  Created by Saurabh Shah on 9/24/15.
@@ -9,27 +9,33 @@
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController {
+class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var userNameTextField: UITextField!
-    @IBAction func onSignUp(sender: AnyObject) {
-    }
-    
-    @IBAction func onSignIn(sender: AnyObject) {
-        PFUser.logInWithUsernameInBackground(userNameTextField.text!, password:passwordTextField.text!) {
-            (user: PFUser?, error: NSError?) -> Void in
-            if user != nil {
-                print("Login Successful")
-                // Do stuff after successful login.
+    @IBAction func onClickSignUp(sender: AnyObject) {
+        var user = PFUser()
+        user.username = userNameTextField.text
+        user.password = passwordTextField.text
+        user.email = emailTextField.text
+        // other fields can be set just like with PFObject
+//        user["phone"] = "415-392-0202"
+        
+        user.signUpInBackgroundWithBlock {
+            (succeeded: Bool, error: NSError?) -> Void in
+            if let error = error {
+                let errorString = error.userInfo["error"] as? NSString
+                // Show the errorString somewhere and let the user try again.
+                print(errorString)
             } else {
-                print("Login Failed")
-                // The login failed. Check error to see why.
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
+        
+
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
