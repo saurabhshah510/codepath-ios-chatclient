@@ -24,6 +24,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             (success: Bool, error: NSError?) -> Void in
             if (success) {
                 print("Message Sent")
+                self.messageText.text = ""
                 // The object has been saved.
             } else {
                 print("Message Sent Error")
@@ -58,13 +59,14 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchMessages()
-        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "fetchMessages", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "fetchMessages", userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
     }
     
     func fetchMessages(){
         print("Refresh called.")
         let query = PFQuery(className:"Message").includeKey("user").orderByDescending("createdAt")
+        query.limit = 10
         query.findObjectsInBackgroundWithBlock { (messages:[PFObject]?, error:NSError?) -> Void in
             self.messages = messages
             self.tableView.reloadData()
