@@ -53,25 +53,17 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchMessages()
+        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "fetchMessages", userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
     }
     
     func fetchMessages(){
+        print("Refresh called.")
         let query = PFQuery(className:"Message")
         query.findObjectsInBackgroundWithBlock { (messages:[PFObject]?, error:NSError?) -> Void in
             self.messages = messages
             self.tableView.reloadData()
         }
-        
-//        query.getObjectInBackgroundWithId("xWMyZEGZ") {
-//            (gameScore: PFObject?, error: NSError?) -> Void in
-//            if error == nil && gameScore != nil {
-//                println(gameScore)
-//            } else {
-//                println(error)
-//            }
-//        }
     }
 
     override func didReceiveMemoryWarning() {
