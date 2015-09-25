@@ -13,6 +13,8 @@
 		0A47C9AB1BB4D67600495BF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A47C9A91BB4D67600495BF0 /* LaunchScreen.storyboard */; };
 		0A47C9B41BB4D8EC00495BF0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47C9B31BB4D8EC00495BF0 /* LoginViewController.swift */; };
 		0A47C9B61BB4DBE800495BF0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47C9B51BB4DBE800495BF0 /* SignUpViewController.swift */; };
+		0A47C9B81BB4E02E00495BF0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47C9B71BB4E02E00495BF0 /* ChatViewController.swift */; };
+		0A47C9BB1BB4E39900495BF0 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47C9BA1BB4E39900495BF0 /* MessageCell.swift */; };
 		FF906A5C419EC162FF6653F8 /* Pods_ChatClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895C7441F5CF7EC98F69DF4B /* Pods_ChatClient.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		0A47C9AC1BB4D67600495BF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A47C9B31BB4D8EC00495BF0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0A47C9B51BB4DBE800495BF0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0A47C9B71BB4E02E00495BF0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		0A47C9BA1BB4E39900495BF0 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		895C7441F5CF7EC98F69DF4B /* Pods_ChatClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95B7FAF89D1DEE19F134A4AA /* Pods-ChatClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChatClient/Pods-ChatClient.debug.xcconfig"; sourceTree = "<group>"; };
 		F933EB7C51D34BCA3653DD93 /* Pods-ChatClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChatClient/Pods-ChatClient.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,6 +67,7 @@
 		0A47C99F1BB4D67600495BF0 /* ChatClient */ = {
 			isa = PBXGroup;
 			children = (
+				0A47C9B91BB4E37D00495BF0 /* Views */,
 				0A47C9B21BB4D8C800495BF0 /* ViewControllers */,
 				0A47C9A01BB4D67600495BF0 /* AppDelegate.swift */,
 				0A47C9A41BB4D67600495BF0 /* Main.storyboard */,
@@ -78,8 +83,17 @@
 			children = (
 				0A47C9B51BB4DBE800495BF0 /* SignUpViewController.swift */,
 				0A47C9B31BB4D8EC00495BF0 /* LoginViewController.swift */,
+				0A47C9B71BB4E02E00495BF0 /* ChatViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0A47C9B91BB4E37D00495BF0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0A47C9BA1BB4E39900495BF0 /* MessageCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		45BD92488C37F1F9192EFB0C /* Pods */ = {
@@ -222,7 +236,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A47C9B61BB4DBE800495BF0 /* SignUpViewController.swift in Sources */,
+				0A47C9BB1BB4E39900495BF0 /* MessageCell.swift in Sources */,
 				0A47C9B41BB4D8EC00495BF0 /* LoginViewController.swift in Sources */,
+				0A47C9B81BB4E02E00495BF0 /* ChatViewController.swift in Sources */,
 				0A47C9A11BB4D67600495BF0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
